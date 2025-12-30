@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Southern California River Basin Explorer</title>
+  
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- Plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+</head>
+<body>
+  <div id="app">
+    <!-- Left side: Map -->
+    <div id="map-panel">
+      <header class="panel-header">
+        <div>
+          <h1 id="panel-title">Southern California River Basin</h1>
+          <p class="sub">Orange · Riverside · San Diego</p>
+        </div>
+      </header>
+      <div id="map"></div>
+    </div>
+    
+    <!-- Right side: Visualization -->
+    <div id="viz-panel">
+      <header class="panel-header right-header">
+        <div>
+          <h1 id="chart-title">Water Multipliers – Select a Basin</h1>
+          <p class="sub" id="chart-subtitle">
+            Click a basin on the map to view water usage data
+          </p>
+        </div>
+        <div id="viz-controls">
+          <button id="demand-btn" class="pill pill-primary">
+            Mode: per $1
+          </button>
+          <button id="help-btn" class="pill pill-help">Help</button>
+        </div>
+      </header>
+      
+      <!-- Sector list (clickable pills) -->
+      <div id="sector-list">
+        <div class="sector-pill">Farming</div>
+        <div class="sector-pill">Forestry activity</div>
+        <div class="sector-pill">Mining</div>
+        <div class="sector-pill">Utilities</div>
+      </div>
+      
+      <!-- Charts Container -->
+      <div id="charts-container">
+        <div class="chart-wrapper">
+          <h3>Water Usage by Sector</h3>
+          <div id="barChart"></div>
+        </div>
+        <div class="chart-wrapper">
+          <h3>Distribution Breakdown</h3>
+          <div id="pieChart"></div>
+        </div>
+        <div class="chart-wrapper">
+          <h3>Comparison View</h3>
+          <div id="lineChart"></div>
+        </div>
+      </div>
+      
+      <!-- Chart caption -->
+      <div id="chart-caption">
+        Select a basin on the map to view detailed water multiplier data
+      </div>
+    </div>
+  </div>
+  
+  <!-- Help Modal -->
+  <div id="helpModal" class="modal">
+    <div class="modal-content">
+      <h2>🌊 Water Multipliers Explorer</h2>
+      <p>This interactive tool helps you understand water usage across Southern California river basins.</p>
+      
+      <h3>What are Water Multipliers?</h3>
+      <p>Water multipliers show how many cubic metres (m³) of water are used throughout the entire economy for each dollar of final demand in a specific sector.</p>
+      
+      <div class="example">
+        <strong>Example:</strong> If the Farming multiplier is 0.87 m³ per $, then an increase of $12 million in final demand for farm products would require approximately:<br><br>
+        0.87 × 12,000,000 ≈ <strong>10.4 million m³</strong> of water across the whole supply chain.
+      </div>
+      
+      <h3>How to Use This App</h3>
+      <p><strong>1. Select a Basin:</strong> Click on any colored region on the map (Orange, Riverside, or San Diego County) to view its data.</p>
+      <p><strong>2. Toggle View Mode:</strong> Click the "Mode" button to switch between viewing water usage per $1 (default) or per $12 million of final demand.</p>
+      <p><strong>3. Explore Sectors:</strong> Click on sector pills (Farming, Forestry, Mining, Utilities) to highlight specific industries.</p>
+      <p><strong>4. Analyze Charts:</strong> The bar chart shows usage levels, the pie chart shows proportional distribution, and the line chart compares both modes.</p>
+      
+      <h3>Understanding the Data</h3>
+      <p>Different basins have vastly different water multipliers depending on their agricultural intensity, industrial activity, and water infrastructure. Riverside County, for example, has much higher farming multipliers due to extensive agricultural operations.</p>
+      
+      <button class="modal-close" id="modal-close-btn">Got it!</button>
+    </div>
+  </div>
+  
+  <!-- Custom JavaScript -->
+  <script src="sketch.js"></script>
+</body>
+</html>
