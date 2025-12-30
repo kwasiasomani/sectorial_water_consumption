@@ -8,13 +8,11 @@
 
 ## 💡 Why This Project Exists
 
-Water does not disappear when we turn off the tap.
-
 Every dollar we spend  on food, energy, services, and infrastructure ,quietly pulls water from rivers, aquifers, and ecosystems. Much of this water use is **hidden**, flowing through supply chains long before a product reaches us.
 
 The **Water Multipliers Explorer** makes this invisible water visible.
 
-By combining **economic data** with **river basin geography**, this project reveals how economic demand translates into **real pressure on Southern California’s water systems**.
+By combining **economic data** with **river basin geometry**, this project reveals how economic demand translates into **real pressure on Southern California’s water systems**.
 
 ---
 
@@ -93,4 +91,5 @@ Understanding water multipliers helps decision-makers ask better questions:
 ## 👤 Author
 
 **Kwasi Asomani**  
+
 
